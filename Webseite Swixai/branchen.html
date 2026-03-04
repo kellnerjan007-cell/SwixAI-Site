@@ -187,7 +187,7 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
 }
 /* Service routing */
-[data-service]{display:none}
+:not(html)[data-service]{display:none}
 html[data-service=voiceagent] [data-service=voiceagent],html[data-service=chatbot] [data-service=chatbot],html[data-service=webdesign] [data-service=webdesign]{display:block}
 /* Service switcher */
 .service-switcher{display:flex;justify-content:center;gap:10px;padding:20px 0 48px;flex-wrap:wrap}
