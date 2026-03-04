@@ -186,7 +186,16 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
 }
+/* Service routing */
+[data-service]{display:none}
+html[data-service=voiceagent] [data-service=voiceagent],html[data-service=chatbot] [data-service=chatbot],html[data-service=webdesign] [data-service=webdesign]{display:block}
+/* Service switcher */
+.service-switcher{display:flex;justify-content:center;gap:10px;padding:20px 0 48px;flex-wrap:wrap}
+.service-tab{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border2);color:var(--text2);transition:all .2s;text-decoration:none}
+.service-tab:hover{border-color:var(--gold);color:var(--text)}
+.service-tab.active{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.4);color:var(--gold)}
 </style>
+<script>document.documentElement.setAttribute('data-service',new URLSearchParams(location.search).get('service')||'voiceagent')</script>
 </head>
 <body>
 
@@ -240,34 +249,70 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
         <a href="index.html">Home</a> <span>›</span>
         <span style="color:var(--text2)">Branchen</span>
       </div>
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-dot">🏭</div>
-        <span>8 Branchen, ein Anbieter</span>
+
+      <div data-service="voiceagent">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">🎙️</div><span>8 Branchen, ein Voice Agent</span></div>
+        <h1>Spezialisiert auf <em>Ihre Branche</em></h1>
+        <p>Jeder KI-Voice-Agent wird individuell auf die Besonderheiten Ihrer Branche zugeschnitten.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
+          <a href="ki-voice-agent.html" class="btn btn-outline">AI Voice Agent entdecken</a>
+        </div>
       </div>
-      <h1>Spezialisiert auf <em>Ihre Branche</em></h1>
-      <p>Jeder KI-Agent wird individuell auf die Besonderheiten Ihrer Branche zugeschnitten.</p>
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
-        <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
-        <a href="ki-voice-agent.html" class="btn btn-outline">AI Voice Agent entdecken</a>
+
+      <div data-service="chatbot">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">💬</div><span>8 Branchen, ein Chat Agent</span></div>
+        <h1>Chat-Support für <em>jede Branche</em></h1>
+        <p>Jeder Chat-Agent wird individuell auf die Anforderungen Ihrer Branche und Zielgruppe trainiert.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
+          <a href="ki-chat-agent.html" class="btn btn-outline">AI Chat Agent entdecken</a>
+        </div>
+      </div>
+
+      <div data-service="webdesign">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">🎨</div><span>Websites für jede Branche</span></div>
+        <h1>Webdesign für <em>Ihre Branche</em></h1>
+        <p>Jede Website wird individuell auf Ihre Branche, Zielgruppe und Geschäftsziele abgestimmt.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
+          <a href="webdesign.html" class="btn btn-outline">Webdesign entdecken</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SERVICE SWITCHER -->
+<div class="container">
+  <div class="service-switcher">
+    <a href="?service=voiceagent" class="service-tab" data-tab="voiceagent">🎙️ Voice Agent</a>
+    <a href="?service=chatbot" class="service-tab" data-tab="chatbot">💬 Chat Agent</a>
+    <a href="?service=webdesign" class="service-tab" data-tab="webdesign">🎨 Webdesign</a>
+  </div>
+</div>
+
 <!-- STATS -->
 <div class="container">
-  <div class="stats-row reveal">
-    <div class="stat-item">
-      <div class="stat-val">8<span>+</span></div>
-      <div class="stat-label">Unterstützte Branchen</div>
+  <div data-service="voiceagent">
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-val">8<span>+</span></div><div class="stat-label">Unterstützte Branchen</div></div>
+      <div class="stat-item"><div class="stat-val">100<span>%</span></div><div class="stat-label">Individuell angepasst</div></div>
+      <div class="stat-item"><div class="stat-val">24<span>/7</span></div><div class="stat-label">Erreichbarkeit garantiert</div></div>
     </div>
-    <div class="stat-item">
-      <div class="stat-val">100<span>%</span></div>
-      <div class="stat-label">Individuell angepasst</div>
+  </div>
+  <div data-service="chatbot">
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-val">8<span>+</span></div><div class="stat-label">Branchen mit Chat-Lösung</div></div>
+      <div class="stat-item"><div class="stat-val">100<span>%</span></div><div class="stat-label">Individuell trainiert</div></div>
+      <div class="stat-item"><div class="stat-val">24<span>/7</span></div><div class="stat-label">Chat immer aktiv</div></div>
     </div>
-    <div class="stat-item">
-      <div class="stat-val">24<span>/7</span></div>
-      <div class="stat-label">Erreichbarkeit garantiert</div>
+  </div>
+  <div data-service="webdesign">
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-val">8<span>+</span></div><div class="stat-label">Branchen-Spezialisierungen</div></div>
+      <div class="stat-item"><div class="stat-val">100<span>%</span></div><div class="stat-label">Mobil optimiert</div></div>
+      <div class="stat-item"><div class="stat-val">SEO<span></span></div><div class="stat-label">Jede Seite optimiert</div></div>
     </div>
   </div>
 </div>
@@ -275,111 +320,64 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
 <!-- INDUSTRY CARDS -->
 <section class="industries-section">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag"><span class="label">Alle Branchen</span></div>
-      <h2 class="section-title">KI-Agenten für<br><em>jeden Sektor</em></h2>
-      <p class="section-desc">Von Arztpraxen bis Immobilien — wir kennen die Anforderungen Ihrer Branche und bauen den Agenten, der wirklich passt.</p>
+
+    <!-- Voice Agent Branchen -->
+    <div data-service="voiceagent">
+      <div class="section-header reveal">
+        <div class="section-tag"><span class="label">Alle Branchen</span></div>
+        <h2 class="section-title">Voice Agent für<br><em>jeden Sektor</em></h2>
+        <p class="section-desc">Von Arztpraxen bis Immobilien — wir kennen die Anforderungen Ihrer Branche und bauen den Agenten, der wirklich passt.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal"><span class="industry-emoji">🦷</span><h3>Zahnarztpraxen &amp; Arztpraxen</h3><p>Terminbuchung, Recall-Management, Versicherungsfragen.</p><ul class="industry-features"><li>Terminbuchung &amp; Umbuchung</li><li>Kassen- &amp; Privatpatienten</li><li>Notfallpriorisierung</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.08s"><span class="industry-emoji">🚗</span><h3>Autohäuser &amp; Werkstätten</h3><p>Werkstatttermine, Probefahrten, Fahrzeugabfragen.</p><ul class="industry-features"><li>Servicetermine buchen</li><li>Fahrzeugstatus abfragen</li><li>Angebote weiterleiten</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.16s"><span class="industry-emoji">💆</span><h3>Beauty &amp; Wellness</h3><p>Kosmetik, Friseure, Massagen, Spas — immer ausgebucht.</p><ul class="industry-features"><li>Online-Buchung per Anruf</li><li>Behandlungsempfehlung</li><li>SMS-Erinnerungen</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.24s"><span class="industry-emoji">⚖️</span><h3>Kanzleien &amp; Berater</h3><p>Erstgespräche vereinbaren, Mandanteninfos aufnehmen.</p><ul class="industry-features"><li>Erstberatung buchen</li><li>Zuständigkeit klären</li><li>Dringende Fälle priorisieren</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.1s"><span class="industry-emoji">🏨</span><h3>Hotels &amp; Gastronomie</h3><p>Reservierungen, Zimmerverfügbarkeit, Tischreservierungen.</p><ul class="industry-features"><li>Reservierungen in Echtzeit</li><li>Anfragen nach Menü / Zimmer</li><li>Stornierung &amp; Umbuchung</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.18s"><span class="industry-emoji">🔧</span><h3>Handwerk &amp; Services</h3><p>Kostenvoranschläge, Besichtigungstermine, Notdienst.</p><ul class="industry-features"><li>Notdienst-Priorisierung</li><li>Terminplanung</li><li>Angebots-Routing</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.26s"><span class="industry-emoji">🏋️</span><h3>Fitnessstudios &amp; Sport</h3><p>Mitgliedschaften, Kursbuchungen, Probetraining.</p><ul class="industry-features"><li>Kurse buchen</li><li>Mitgliedsfragen</li><li>Probetraining einplanen</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.34s"><span class="industry-emoji">🏠</span><h3>Immobilien</h3><p>Besichtigungen vereinbaren, Exposé-Anfragen, Qualifizierung.</p><ul class="industry-features"><li>Besichtigungen planen</li><li>Interessenten qualifizieren</li><li>Makler weiterleiten</li></ul></div>
+      </div>
     </div>
 
-    <div class="industries-grid">
-
-      <!-- Card 1: Zahnarzt -->
-      <div class="industry-card reveal">
-        <span class="industry-emoji">🦷</span>
-        <h3>Zahnarztpraxen &amp; Arztpraxen</h3>
-        <p>Terminbuchung, Recall-Management, Versicherungsfragen.</p>
-        <ul class="industry-features">
-          <li>Terminbuchung &amp; Umbuchung</li>
-          <li>Kassen- &amp; Privatpatienten</li>
-          <li>Notfallpriorisierung</li>
-        </ul>
+    <!-- Chat Agent Branchen -->
+    <div data-service="chatbot">
+      <div class="section-header reveal">
+        <div class="section-tag"><span class="label">Alle Branchen</span></div>
+        <h2 class="section-title">Chat Agent für<br><em>jeden Sektor</em></h2>
+        <p class="section-desc">Von E-Commerce bis Gesundheit — wir trainieren Ihren Chat-Agenten auf die Sprache und Bedürfnisse Ihrer Kunden.</p>
       </div>
-
-      <!-- Card 2: Autohaus -->
-      <div class="industry-card reveal" style="transition-delay:.08s">
-        <span class="industry-emoji">🚗</span>
-        <h3>Autohäuser &amp; Werkstätten</h3>
-        <p>Werkstatttermine, Probefahrten, Fahrzeugabfragen.</p>
-        <ul class="industry-features">
-          <li>Servicetermine buchen</li>
-          <li>Fahrzeugstatus abfragen</li>
-          <li>Angebote weiterleiten</li>
-        </ul>
+      <div class="industries-grid">
+        <div class="industry-card reveal"><span class="industry-emoji">🛍️</span><h3>E-Commerce &amp; Onlineshops</h3><p>Produktberatung, Bestellstatus, Retouren rund um die Uhr.</p><ul class="industry-features"><li>Produkte empfehlen</li><li>Bestellstatus abfragen</li><li>Retourenabwicklung</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.08s"><span class="industry-emoji">🏥</span><h3>Gesundheit &amp; Medizin</h3><p>Terminanfragen, FAQ zu Behandlungen, Versicherungsinfos.</p><ul class="industry-features"><li>Terminanfragen bearbeiten</li><li>Behandlungsfragen beantworten</li><li>An Fachpersonen weiterleiten</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.16s"><span class="industry-emoji">🏦</span><h3>Finanz &amp; Versicherung</h3><p>Angebote, Produktfragen, Terminvereinbarung mit Beratern.</p><ul class="industry-features"><li>Produktfragen klären</li><li>Lead-Qualifizierung</li><li>Beratungstermine buchen</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.24s"><span class="industry-emoji">⚖️</span><h3>Kanzleien &amp; Berater</h3><p>Erstkontakt, Mandantenanfragen, Terminbuchung online.</p><ul class="industry-features"><li>Erstanfragen qualifizieren</li><li>Zuständigkeit klären</li><li>Erstberatung buchen</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.1s"><span class="industry-emoji">🏨</span><h3>Hotels &amp; Tourismus</h3><p>Buchungsinfos, Empfehlungen, Check-in-Fragen beantworten.</p><ul class="industry-features"><li>Verfügbarkeit prüfen</li><li>Zimmerinfos geben</li><li>Buchungsanfragen weiterleiten</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.18s"><span class="industry-emoji">🎓</span><h3>Bildung &amp; Kurse</h3><p>Kursinfos, Anmeldung, Prüfungsinfos rund um die Uhr.</p><ul class="industry-features"><li>Kursdetails beantworten</li><li>Anmeldung unterstützen</li><li>FAQ automatisieren</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.26s"><span class="industry-emoji">🏋️</span><h3>Fitness &amp; Wellness</h3><p>Mitgliedschaft, Kursplan, Öffnungszeiten — alles im Chat.</p><ul class="industry-features"><li>Kursplan teilen</li><li>Mitgliedsfragen klären</li><li>Probetraining buchen</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.34s"><span class="industry-emoji">🏠</span><h3>Immobilien</h3><p>Objektanfragen, Besichtigungen, Lead-Qualifizierung im Chat.</p><ul class="industry-features"><li>Objektinfos bereitstellen</li><li>Interessenten qualifizieren</li><li>Besichtigung vereinbaren</li></ul></div>
       </div>
-
-      <!-- Card 3: Beauty -->
-      <div class="industry-card reveal" style="transition-delay:.16s">
-        <span class="industry-emoji">💆</span>
-        <h3>Beauty &amp; Wellness</h3>
-        <p>Kosmetik, Friseure, Massagen, Spas — immer ausgebucht.</p>
-        <ul class="industry-features">
-          <li>Online-Buchung per Anruf</li>
-          <li>Behandlungsempfehlung</li>
-          <li>SMS-Erinnerungen</li>
-        </ul>
-      </div>
-
-      <!-- Card 4: Kanzlei -->
-      <div class="industry-card reveal" style="transition-delay:.24s">
-        <span class="industry-emoji">⚖️</span>
-        <h3>Kanzleien &amp; Berater</h3>
-        <p>Erstgespräche vereinbaren, Mandanteninfos aufnehmen.</p>
-        <ul class="industry-features">
-          <li>Erstberatung buchen</li>
-          <li>Zuständigkeit klären</li>
-          <li>Dringende Fälle priorisieren</li>
-        </ul>
-      </div>
-
-      <!-- Card 5: Hotel -->
-      <div class="industry-card reveal" style="transition-delay:.1s">
-        <span class="industry-emoji">🏨</span>
-        <h3>Hotels &amp; Gastronomie</h3>
-        <p>Reservierungen, Zimmerverfügbarkeit, Tischreservierungen.</p>
-        <ul class="industry-features">
-          <li>Reservierungen in Echtzeit</li>
-          <li>Anfragen nach Menü / Zimmer</li>
-          <li>Stornierung &amp; Umbuchung</li>
-        </ul>
-      </div>
-
-      <!-- Card 6: Handwerk -->
-      <div class="industry-card reveal" style="transition-delay:.18s">
-        <span class="industry-emoji">🔧</span>
-        <h3>Handwerk &amp; Services</h3>
-        <p>Kostenvoranschläge, Besichtigungstermine, Notdienst.</p>
-        <ul class="industry-features">
-          <li>Notdienst-Priorisierung</li>
-          <li>Terminplanung</li>
-          <li>Angebots-Routing</li>
-        </ul>
-      </div>
-
-      <!-- Card 7: Fitness -->
-      <div class="industry-card reveal" style="transition-delay:.26s">
-        <span class="industry-emoji">🏋️</span>
-        <h3>Fitnessstudios &amp; Sport</h3>
-        <p>Mitgliedschaften, Kursbuchungen, Probetraining.</p>
-        <ul class="industry-features">
-          <li>Kurse buchen</li>
-          <li>Mitgliedsfragen</li>
-          <li>Probetraining einplanen</li>
-        </ul>
-      </div>
-
-      <!-- Card 8: Immobilien -->
-      <div class="industry-card reveal" style="transition-delay:.34s">
-        <span class="industry-emoji">🏠</span>
-        <h3>Immobilien</h3>
-        <p>Besichtigungen vereinbaren, Exposé-Anfragen, Qualifizierung.</p>
-        <ul class="industry-features">
-          <li>Besichtigungen planen</li>
-          <li>Interessenten qualifizieren</li>
-          <li>Makler weiterleiten</li>
-        </ul>
-      </div>
-
     </div>
+
+    <!-- Webdesign Branchen -->
+    <div data-service="webdesign">
+      <div class="section-header reveal">
+        <div class="section-tag"><span class="label">Alle Branchen</span></div>
+        <h2 class="section-title">Webdesign für<br><em>jeden Sektor</em></h2>
+        <p class="section-desc">Von der Arztpraxis bis zum Onlineshop — wir bauen Websites, die zu Ihrer Branche passen und Kunden überzeugen.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal"><span class="industry-emoji">🦷</span><h3>Arztpraxen &amp; Kliniken</h3><p>Professionell, vertrauenswürdig und DSGVO-konform.</p><ul class="industry-features"><li>Online-Terminbuchung</li><li>DSGVO-konform</li><li>Patienteninfos strukturiert</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.08s"><span class="industry-emoji">🍽️</span><h3>Restaurants &amp; Gastronomie</h3><p>Menü, Reservierung und Atmosphäre optimal präsentiert.</p><ul class="industry-features"><li>Online-Reservierung</li><li>Menükarte digital</li><li>Standort &amp; Öffnungszeiten</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.16s"><span class="industry-emoji">⚖️</span><h3>Kanzleien &amp; Berater</h3><p>Expertise, Seriosität und Lead-Generierung im Fokus.</p><ul class="industry-features"><li>Kompetenz präsentieren</li><li>Erstanfragen generieren</li><li>Professionelles Design</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.24s"><span class="industry-emoji">🔧</span><h3>Handwerk &amp; Services</h3><p>Portfolio, Anfragen und lokale SEO für mehr Aufträge.</p><ul class="industry-features"><li>Portfolio zeigen</li><li>Anfragen online empfangen</li><li>Lokale SEO-Optimierung</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.1s"><span class="industry-emoji">🎓</span><h3>Coaching &amp; Beratung</h3><p>Personal Branding, Buchungssystem und starke Präsenz.</p><ul class="industry-features"><li>Personal Brand aufbauen</li><li>Buchungssystem integrieren</li><li>Vertrauen aufbauen</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.18s"><span class="industry-emoji">🏡</span><h3>Immobilien &amp; Makler</h3><p>Objektpräsentation, Lead-Capture und Besichtigungsanfragen.</p><ul class="industry-features"><li>Objekte präsentieren</li><li>Leads generieren</li><li>Kontaktformulare</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.26s"><span class="industry-emoji">🛍️</span><h3>Online-Shops</h3><p>Performance, Conversion-Optimierung und SEO-fokussiert.</p><ul class="industry-features"><li>Schnelle Ladezeiten</li><li>Conversion-Optimierung</li><li>SEO &amp; Analytics</li></ul></div>
+        <div class="industry-card reveal" style="transition-delay:.34s"><span class="industry-emoji">🏋️</span><h3>Sport &amp; Wellness</h3><p>Community, Buchungssystem und Events professionell präsentiert.</p><ul class="industry-features"><li>Kursplan &amp; Buchung</li><li>Community-Bereich</li><li>Events &amp; Angebote</li></ul></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -460,6 +458,14 @@ function toggleMenu(){
   if(l.style.display==='flex'){l.style.display='';a.style.display=''}
   else{l.style.cssText='display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);z-index:99';a.style.cssText='display:flex;flex-direction:column;position:fixed;top:calc(70px + 170px);left:0;right:0;background:rgba(10,11,15,.97);padding:0 24px 24px;z-index:99;gap:10px'}
 }
+// Service router
+(function(){
+  var service=new URLSearchParams(location.search).get('service')||'voiceagent';
+  document.querySelectorAll('.service-tab[data-tab]').forEach(function(t){t.classList.toggle('active',t.dataset.tab===service)});
+  ['prozess.html','branchen.html','preise.html','faq.html'].forEach(function(p){
+    document.querySelectorAll('a[href="'+p+'"]').forEach(function(a){a.href=p+'?service='+service});
+  });
+})();
 </script>
 </body>
 </html>

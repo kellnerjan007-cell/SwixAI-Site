@@ -195,7 +195,16 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
 }
+/* Service routing */
+[data-service]{display:none}
+html[data-service=voiceagent] [data-service=voiceagent],html[data-service=chatbot] [data-service=chatbot],html[data-service=webdesign] [data-service=webdesign]{display:block}
+/* Service switcher */
+.service-switcher{display:flex;justify-content:center;gap:10px;padding:20px 0 48px;flex-wrap:wrap}
+.service-tab{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border2);color:var(--text2);transition:all .2s;text-decoration:none}
+.service-tab:hover{border-color:var(--gold);color:var(--text)}
+.service-tab.active{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.4);color:var(--gold)}
 </style>
+<script>document.documentElement.setAttribute('data-service',new URLSearchParams(location.search).get('service')||'voiceagent')</script>
 </head>
 <body>
 
@@ -249,34 +258,70 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
         <a href="index.html">Home</a> <span>›</span>
         <span style="color:var(--text2)">Prozess</span>
       </div>
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-dot">⚡</div>
-        <span>Setup in durchschnittlich 48 Stunden</span>
+
+      <div data-service="voiceagent">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">⚡</div><span>Setup in durchschnittlich 48 Stunden</span></div>
+        <h1>In 4 Schritten zum <em>funktionierenden</em> Voice Agent</h1>
+        <p>Von der Anmeldung bis zum ersten Anruf — schneller als Sie denken. Durchschnittliche Setup-Zeit: 48 Stunden.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
+          <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+        </div>
       </div>
-      <h1>In 4 Schritten zum <em>funktionierenden</em> KI-Agenten</h1>
-      <p>Von der Anmeldung bis zum ersten Anruf — schneller als Sie denken. Durchschnittliche Setup-Zeit: 48 Stunden.</p>
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
-        <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
-        <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+
+      <div data-service="chatbot">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">💬</div><span>Integration in unter 24 Stunden</span></div>
+        <h1>In 4 Schritten zum smarten <em>Chat-Agenten</em></h1>
+        <p>Von der Einrichtung bis zum ersten Chat — schnell, einfach und ohne technisches Vorwissen.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
+          <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+        </div>
+      </div>
+
+      <div data-service="webdesign">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">🎨</div><span>Von Briefing bis Launch in 2–4 Wochen</span></div>
+        <h1>In 4 Schritten zur <em>perfekten Website</em></h1>
+        <p>Von der ersten Idee bis zum Go-live — strukturiert, professionell und vollständig betreut.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
+          <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SERVICE SWITCHER -->
+<div class="container">
+  <div class="service-switcher">
+    <a href="?service=voiceagent" class="service-tab" data-tab="voiceagent">🎙️ Voice Agent</a>
+    <a href="?service=chatbot" class="service-tab" data-tab="chatbot">💬 Chat Agent</a>
+    <a href="?service=webdesign" class="service-tab" data-tab="webdesign">🎨 Webdesign</a>
+  </div>
+</div>
+
 <!-- STATS -->
 <div class="container">
-  <div class="stats-row reveal">
-    <div class="stat-item">
-      <div class="stat-val">48<span>h</span></div>
-      <div class="stat-label">Durchschnittliche Setup-Zeit</div>
+  <div data-service="voiceagent">
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-val">48<span>h</span></div><div class="stat-label">Durchschnittliche Setup-Zeit</div></div>
+      <div class="stat-item"><div class="stat-val">4<span></span></div><div class="stat-label">Einfache Schritte zum Live-Agent</div></div>
+      <div class="stat-item"><div class="stat-val">0<span>€</span></div><div class="stat-label">Einrichtungsgebühr</div></div>
     </div>
-    <div class="stat-item">
-      <div class="stat-val">4<span></span></div>
-      <div class="stat-label">Einfache Schritte zum Live-Agent</div>
+  </div>
+  <div data-service="chatbot">
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-val">24<span>h</span></div><div class="stat-label">Durchschnittliche Integrationszeit</div></div>
+      <div class="stat-item"><div class="stat-val">4<span></span></div><div class="stat-label">Einfache Schritte zum Live-Chat</div></div>
+      <div class="stat-item"><div class="stat-val">0<span>€</span></div><div class="stat-label">Einrichtungsgebühr</div></div>
     </div>
-    <div class="stat-item">
-      <div class="stat-val">0<span>€</span></div>
-      <div class="stat-label">Einrichtungsgebühr</div>
+  </div>
+  <div data-service="webdesign">
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-val">2<span>–4 Wo</span></div><div class="stat-label">Durchschnittliche Projektdauer</div></div>
+      <div class="stat-item"><div class="stat-val">4<span></span></div><div class="stat-label">Klare Schritte bis zum Launch</div></div>
+      <div class="stat-item"><div class="stat-val">0<span>€</span></div><div class="stat-label">Einrichtungsgebühr</div></div>
     </div>
   </div>
 </div>
@@ -284,63 +329,100 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
 <!-- PROCESS TIMELINE -->
 <section class="process-section">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag"><span class="label">So läuft es ab</span></div>
-      <h2 class="section-title">Ihr Weg zum<br><em>fertigen KI-Agenten</em></h2>
-      <p class="section-desc">Kein technisches Vorwissen nötig. Wir begleiten Sie von Anfang bis Ende — und darüber hinaus.</p>
+
+    <!-- Voice Agent -->
+    <div data-service="voiceagent">
+      <div class="section-header reveal">
+        <div class="section-tag"><span class="label">So läuft es ab</span></div>
+        <h2 class="section-title">Ihr Weg zum<br><em>fertigen Voice Agent</em></h2>
+        <p class="section-desc">Kein technisches Vorwissen nötig. Wir begleiten Sie von Anfang bis Ende — und darüber hinaus.</p>
+      </div>
+      <div class="process-timeline reveal">
+        <div class="process-step reveal">
+          <div class="process-step-num-wrap"><div class="process-step-num">01</div></div>
+          <span class="process-step-icon">📋</span>
+          <div class="process-step-card" style="position:relative"><h3>Onboarding & Briefing</h3><p>Wir lernen Ihr Unternehmen kennen: Leistungen, Tonalität, Prozesse. Ein kurzes Gespräch reicht.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.12s">
+          <div class="process-step-num-wrap"><div class="process-step-num">02</div></div>
+          <span class="process-step-icon">🎙️</span>
+          <div class="process-step-card" style="position:relative"><h3>Agent konfigurieren</h3><p>Wir richten Ihren KI-Agenten ein: Stimme, Persönlichkeit, Wissensbasis, Gesprächslogik.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.24s">
+          <div class="process-step-num-wrap"><div class="process-step-num">03</div></div>
+          <span class="process-step-icon">🔗</span>
+          <div class="process-step-card" style="position:relative"><h3>Integration & Test</h3><p>Verbindung mit Ihrem Kalender, CRM und Telefon. Ausgiebige Tests bevor es live geht.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.36s">
+          <div class="process-step-num-wrap"><div class="process-step-num">04</div></div>
+          <span class="process-step-icon">🚀</span>
+          <div class="process-step-card" style="position:relative"><h3>Live & optimieren</h3><p>Ihr Agent ist live. Wir überwachen, analysieren und optimieren kontinuierlich.</p></div>
+        </div>
+      </div>
     </div>
 
-    <div class="process-timeline reveal">
-
-      <!-- Step 01 -->
-      <div class="process-step reveal">
-        <div class="process-step-num-wrap">
-          <div class="process-step-num">01</div>
+    <!-- Chat Agent -->
+    <div data-service="chatbot">
+      <div class="section-header reveal">
+        <div class="section-tag"><span class="label">So läuft es ab</span></div>
+        <h2 class="section-title">Ihr Weg zum<br><em>fertigen Chat-Agenten</em></h2>
+        <p class="section-desc">Kein technisches Vorwissen nötig. Wir integrieren alles — Sie brauchen nur Ihren Embed-Code einzufügen.</p>
+      </div>
+      <div class="process-timeline reveal">
+        <div class="process-step reveal">
+          <div class="process-step-num-wrap"><div class="process-step-num">01</div></div>
+          <span class="process-step-icon">📋</span>
+          <div class="process-step-card" style="position:relative"><h3>Onboarding & Briefing</h3><p>Wir lernen Ihr Unternehmen kennen: Produkte, FAQ, Tonalität. Ein kurzes Gespräch reicht.</p></div>
         </div>
-        <span class="process-step-icon">📋</span>
-        <div class="process-step-card" style="position:relative">
-          <h3>Onboarding & Briefing</h3>
-          <p>Wir lernen Ihr Unternehmen kennen: Leistungen, Tonalität, Prozesse. Ein kurzes Gespräch reicht.</p>
+        <div class="process-step reveal" style="transition-delay:.12s">
+          <div class="process-step-num-wrap"><div class="process-step-num">02</div></div>
+          <span class="process-step-icon">💬</span>
+          <div class="process-step-card" style="position:relative"><h3>Chatbot konfigurieren</h3><p>Wir trainieren Ihren Chat-Agenten: Persönlichkeit, Wissensbasis, FAQ-Datenbank und Gesprächsabläufe.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.24s">
+          <div class="process-step-num-wrap"><div class="process-step-num">03</div></div>
+          <span class="process-step-icon">🔗</span>
+          <div class="process-step-card" style="position:relative"><h3>Website-Integration</h3><p>Embed-Code für Ihre Website, Anbindung an CRM und Buchungssystem. Ausgiebige Tests.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.36s">
+          <div class="process-step-num-wrap"><div class="process-step-num">04</div></div>
+          <span class="process-step-icon">🚀</span>
+          <div class="process-step-card" style="position:relative"><h3>Live & optimieren</h3><p>Ihr Chatbot ist live. Wir analysieren Gespräche und optimieren kontinuierlich für bessere Ergebnisse.</p></div>
         </div>
       </div>
-
-      <!-- Step 02 -->
-      <div class="process-step reveal" style="transition-delay:.12s">
-        <div class="process-step-num-wrap">
-          <div class="process-step-num">02</div>
-        </div>
-        <span class="process-step-icon">🎙️</span>
-        <div class="process-step-card" style="position:relative">
-          <h3>Agent konfigurieren</h3>
-          <p>Wir richten Ihren KI-Agenten ein: Stimme, Persönlichkeit, Wissensbasis, Gesprächslogik.</p>
-        </div>
-      </div>
-
-      <!-- Step 03 -->
-      <div class="process-step reveal" style="transition-delay:.24s">
-        <div class="process-step-num-wrap">
-          <div class="process-step-num">03</div>
-        </div>
-        <span class="process-step-icon">🔗</span>
-        <div class="process-step-card" style="position:relative">
-          <h3>Integration & Test</h3>
-          <p>Verbindung mit Ihrem Kalender, CRM und Telefon. Ausgiebige Tests bevor es live geht.</p>
-        </div>
-      </div>
-
-      <!-- Step 04 -->
-      <div class="process-step reveal" style="transition-delay:.36s">
-        <div class="process-step-num-wrap">
-          <div class="process-step-num">04</div>
-        </div>
-        <span class="process-step-icon">🚀</span>
-        <div class="process-step-card" style="position:relative">
-          <h3>Live & optimieren</h3>
-          <p>Ihr Agent ist live. Wir überwachen, analysieren und optimieren kontinuierlich.</p>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Webdesign -->
+    <div data-service="webdesign">
+      <div class="section-header reveal">
+        <div class="section-tag"><span class="label">So läuft es ab</span></div>
+        <h2 class="section-title">Ihr Weg zur<br><em>fertigen Website</em></h2>
+        <p class="section-desc">Strukturiert und transparent — von der Idee bis zum Go-live. Sie sehen jeden Schritt.</p>
+      </div>
+      <div class="process-timeline reveal">
+        <div class="process-step reveal">
+          <div class="process-step-num-wrap"><div class="process-step-num">01</div></div>
+          <span class="process-step-icon">📋</span>
+          <div class="process-step-card" style="position:relative"><h3>Briefing & Konzept</h3><p>Wir lernen Ihre Marke kennen: Ziele, Zielgruppe, Wettbewerb. Gemeinsam definieren wir Struktur und Inhalte.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.12s">
+          <div class="process-step-num-wrap"><div class="process-step-num">02</div></div>
+          <span class="process-step-icon">🎨</span>
+          <div class="process-step-card" style="position:relative"><h3>Design & Prototyp</h3><p>Wireframes und Designentwürfe in Ihrem Branding. Sie geben Feedback, wir verfeinern.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.24s">
+          <div class="process-step-num-wrap"><div class="process-step-num">03</div></div>
+          <span class="process-step-icon">💻</span>
+          <div class="process-step-card" style="position:relative"><h3>Entwicklung & Test</h3><p>Technische Umsetzung, responsiv und SEO-optimiert. Ausgiebige Tests auf allen Geräten.</p></div>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.36s">
+          <div class="process-step-num-wrap"><div class="process-step-num">04</div></div>
+          <span class="process-step-icon">🚀</span>
+          <div class="process-step-card" style="position:relative"><h3>Launch & Support</h3><p>Go-live mit Ihrer Domain. Wir begleiten Sie auch danach — mit Updates und laufender Betreuung.</p></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -434,6 +516,16 @@ function toggleMenu(){
   if(l.style.display==='flex'){l.style.display='';a.style.display=''}
   else{l.style.cssText='display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);z-index:99';a.style.cssText='display:flex;flex-direction:column;position:fixed;top:calc(70px + 170px);left:0;right:0;background:rgba(10,11,15,.97);padding:0 24px 24px;z-index:99;gap:10px'}
 }
+// Service router
+(function(){
+  var service=new URLSearchParams(location.search).get('service')||'voiceagent';
+  // Active tab
+  document.querySelectorAll('.service-tab[data-tab]').forEach(function(t){t.classList.toggle('active',t.dataset.tab===service)});
+  // Update nav links
+  ['prozess.html','branchen.html','preise.html','faq.html'].forEach(function(p){
+    document.querySelectorAll('a[href="'+p+'"]').forEach(function(a){a.href=p+'?service='+service});
+  });
+})();
 </script>
 </body>
 </html>

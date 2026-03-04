@@ -328,6 +328,10 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:64px 0 3
 const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
 const reveals=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});reveals.forEach(el=>obs.observe(el));
 function toggleMenu(){const l=document.querySelector('.nav-links'),a=document.querySelector('.nav-actions');if(l.style.display==='flex'){l.style.display='';a.style.display=''}else{l.style.cssText='display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);z-index:99';a.style.cssText='display:flex;flex-direction:column;position:fixed;top:calc(70px + 170px);left:0;right:0;background:rgba(10,11,15,.97);padding:0 24px 24px;z-index:99;gap:10px'}}
+// Set webdesign service context for nav links
+['prozess.html','branchen.html','preise.html','faq.html'].forEach(function(p){
+  document.querySelectorAll('a[href="'+p+'"]').forEach(function(a){a.href=p+'?service=webdesign'});
+});
 </script>
 </body>
 </html>

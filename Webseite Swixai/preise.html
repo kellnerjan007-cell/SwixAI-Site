@@ -534,7 +534,16 @@ nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
       .section { padding: 60px 20px; }
     }
+    /* Service routing */
+    [data-service]{display:none}
+    html[data-service=voiceagent] [data-service=voiceagent],html[data-service=chatbot] [data-service=chatbot],html[data-service=webdesign] [data-service=webdesign]{display:block}
+    /* Service switcher */
+    .service-switcher{display:flex;justify-content:center;gap:10px;padding:20px 0 48px;flex-wrap:wrap}
+    .service-tab{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border2);color:var(--text2);transition:all .2s;text-decoration:none}
+    .service-tab:hover{border-color:var(--gold);color:var(--text)}
+    .service-tab.active{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.4);color:var(--gold)}
   </style>
+  <script>document.documentElement.setAttribute('data-service',new URLSearchParams(location.search).get('service')||'voiceagent')</script>
 </head>
 <body>
 
@@ -588,24 +597,55 @@ nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1
         <a href="index.html">Home</a> <span>›</span>
         <span style="color:var(--text2)">Preise</span>
       </div>
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-dot">💰</div>
-        <span>Transparent & fair</span>
+
+      <div data-service="voiceagent">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">💰</div><span>Transparent & fair</span></div>
+        <h1>Preise für den <em>AI Voice Agent</em></h1>
+        <p>Alle Pläne inkl. Setup, Onboarding und Support. Jederzeit kündbar.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
+          <a href="faq.html" class="btn btn-outline">Häufige Fragen</a>
+        </div>
       </div>
-      <h1>Transparent. <em>Keine</em> versteckten Kosten.</h1>
-      <p>Alle Pläne inkl. Setup, Onboarding und Support. Jederzeit kündbar.</p>
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
-        <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
-        <a href="faq.html" class="btn btn-outline">Häufige Fragen</a>
+
+      <div data-service="chatbot">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">💰</div><span>Transparent & fair</span></div>
+        <h1>Preise für den <em>AI Chat Agent</em></h1>
+        <p>Alle Pläne inkl. Setup, Widget-Integration und Support. Jederzeit kündbar.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt starten →</a>
+          <a href="faq.html" class="btn btn-outline">Häufige Fragen</a>
+        </div>
+      </div>
+
+      <div data-service="webdesign">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">💰</div><span>Einmalig & fair</span></div>
+        <h1>Preise für <em>Webdesign</em></h1>
+        <p>Einmalige Projektpreise, kein Abo-Zwang. Optional mit monatlicher Betreuung.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Angebot anfragen →</a>
+          <a href="faq.html" class="btn btn-outline">Häufige Fragen</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+  <!-- Service Switcher -->
+  <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+    <div class="service-switcher">
+      <a href="?service=voiceagent" class="service-tab" data-tab="voiceagent">🎙️ Voice Agent</a>
+      <a href="?service=chatbot" class="service-tab" data-tab="chatbot">💬 Chat Agent</a>
+      <a href="?service=webdesign" class="service-tab" data-tab="webdesign">🎨 Webdesign</a>
+    </div>
+  </div>
+
   <!-- Pricing Cards -->
   <section class="section" aria-labelledby="pricing-heading">
     <h2 class="sr-only" id="pricing-heading">Preispläne</h2>
 
+    <!-- Voice Agent Pricing -->
+    <div data-service="voiceagent">
     <div class="pricing-grid">
 
       <!-- Starter -->
@@ -780,6 +820,127 @@ nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1
       <span>14 Tage Geld-zurück-Garantie</span>
       <span>Jederzeit kündbar</span>
     </p>
+    </div><!-- /voiceagent -->
+
+    <!-- Chat Agent Pricing -->
+    <div data-service="chatbot">
+    <div class="pricing-grid">
+
+      <div class="pricing-card reveal">
+        <p class="plan-name">Starter</p>
+        <p class="plan-sub">Geeignet für kleinere Websites</p>
+        <div class="plan-price"><span class="plan-price-amount">CHF&nbsp;99</span><span class="plan-price-period">/Monat</span></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>1.000 Chat-Nachrichten/Monat</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>1 Chat-Agent (Persönlichkeit wählbar)</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>FAQ-Automatisierung</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>E-Mail-Support</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-outline" style="width:100%;">Jetzt starten</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured reveal" style="transition-delay:0.1s">
+        <span class="badge">Beliebt</span>
+        <p class="plan-name">Pro</p>
+        <p class="plan-sub">Für wachsende Unternehmen</p>
+        <div class="plan-price"><span class="plan-price-amount">CHF&nbsp;199</span><span class="plan-price-period">/Monat</span></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>5.000 Chat-Nachrichten/Monat</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>1 Chat-Agent (voll anpassbar)</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Kalender- &amp; CRM-Anbindung</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Lead-Qualifizierung</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Mehrsprachigkeit (DE &amp; EN)</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Support per WhatsApp &amp; E-Mail</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-gold" style="width:100%;">Jetzt starten</a>
+        <p class="plan-note">Meistgewählter Plan ★</p>
+      </div>
+
+      <div class="pricing-card reveal" style="transition-delay:0.2s">
+        <p class="plan-name">Business</p>
+        <p class="plan-sub">Für hohe Anfragevolumen</p>
+        <div class="plan-price"><span class="plan-price-amount">CHF&nbsp;399</span><span class="plan-price-period">/Monat</span></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Unbegrenzte Nachrichten</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Mehrere Chat-Widgets</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Individuelle KI-Trainingsdaten</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Mehrsprachigkeit (DE, EN, FR &amp; IT)</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Persönlicher Ansprechpartner</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-outline" style="width:100%;">Kontakt aufnehmen</a>
+      </div>
+
+    </div>
+    <p class="pricing-guarantee reveal" style="transition-delay:0.3s">
+      <span>Kostenloses Setup &amp; Integration</span>
+      <span>14 Tage Geld-zurück-Garantie</span>
+      <span>Jederzeit kündbar</span>
+    </p>
+    </div><!-- /chatbot -->
+
+    <!-- Webdesign Pricing -->
+    <div data-service="webdesign">
+    <div class="pricing-grid">
+
+      <div class="pricing-card reveal">
+        <p class="plan-name">Starter</p>
+        <p class="plan-sub">Landing Page / 1-Seiter</p>
+        <div class="plan-price"><span class="plan-price-amount">CHF&nbsp;1.490</span><span class="plan-price-period"> einmalig</span></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>1 Landing Page (bis 5 Sektionen)</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Mobil optimiert &amp; schnell</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Kontaktformular</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>SEO-Grundoptimierung</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Lieferzeit: ca. 1–2 Wochen</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-outline" style="width:100%;">Angebot anfragen</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured reveal" style="transition-delay:0.1s">
+        <span class="badge">Beliebt</span>
+        <p class="plan-name">Pro</p>
+        <p class="plan-sub">Mehrseiter bis 7 Unterseiten</p>
+        <div class="plan-price"><span class="plan-price-amount">CHF&nbsp;2.990</span><span class="plan-price-period"> einmalig</span></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Bis zu 7 Unterseiten</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Individuelles Design &amp; Branding</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>SEO-Volloptimierung</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Kontaktformular &amp; Buchungssystem</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>DSGVO-konform</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Lieferzeit: ca. 2–3 Wochen</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-gold" style="width:100%;">Angebot anfragen</a>
+        <p class="plan-note">Meistgewählter Plan ★</p>
+      </div>
+
+      <div class="pricing-card reveal" style="transition-delay:0.2s">
+        <p class="plan-name">Business</p>
+        <p class="plan-sub">Komplexprojekte &amp; Shops</p>
+        <div class="plan-price"><span class="plan-price-amount">Auf Anfrage</span></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Unbegrenzte Seiten</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>E-Commerce / Online-Shop</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Individuelle Funktionen &amp; API</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>KI-Integration (Voice &amp; Chat)</li>
+          <li class="feature-item"><span class="feature-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></span>Persönlicher Projektmanager</li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-outline" style="width:100%;">Kontakt aufnehmen</a>
+      </div>
+
+    </div>
+    <p class="pricing-guarantee reveal" style="transition-delay:0.3s">
+      <span>Kostenloses Erstgespräch</span>
+      <span>Fixpreise — keine Überraschungen</span>
+      <span>Inkl. 30 Tage After-Launch Support</span>
+    </p>
+    </div><!-- /webdesign -->
+
   </section>
 
   <!-- Add-ons -->
@@ -890,6 +1051,14 @@ function toggleMenu(){
   if(l.style.display==='flex'){l.style.display='';a.style.display=''}
   else{l.style.cssText='display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);z-index:99';a.style.cssText='display:flex;flex-direction:column;position:fixed;top:calc(70px + 170px);left:0;right:0;background:rgba(10,11,15,.97);padding:0 24px 24px;z-index:99;gap:10px'}
 }
+// Service router
+(function(){
+  var service=new URLSearchParams(location.search).get('service')||'voiceagent';
+  document.querySelectorAll('.service-tab[data-tab]').forEach(function(t){t.classList.toggle('active',t.dataset.tab===service)});
+  ['prozess.html','branchen.html','preise.html','faq.html'].forEach(function(p){
+    document.querySelectorAll('a[href="'+p+'"]').forEach(function(a){a.href=p+'?service='+service});
+  });
+})();
 </script>
 
 </body>

@@ -484,7 +484,16 @@ nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1
       .faq-trigger { padding: 22px 16px; }
       .faq-answer { padding: 0 16px 22px; }
     }
+    /* Service routing */
+    [data-service]{display:none}
+    html[data-service=voiceagent] [data-service=voiceagent],html[data-service=chatbot] [data-service=chatbot],html[data-service=webdesign] [data-service=webdesign]{display:block}
+    /* Service switcher */
+    .service-switcher{display:flex;justify-content:center;gap:10px;padding:20px 0 48px;flex-wrap:wrap}
+    .service-tab{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border2);color:var(--text2);transition:all .2s;text-decoration:none}
+    .service-tab:hover{border-color:var(--gold);color:var(--text)}
+    .service-tab.active{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.4);color:var(--gold)}
   </style>
+  <script>document.documentElement.setAttribute('data-service',new URLSearchParams(location.search).get('service')||'voiceagent')</script>
 </head>
 <body>
 
@@ -539,107 +548,95 @@ nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1
         <a href="index.html">Home</a> <span>›</span>
         <span style="color:var(--text2)">FAQ</span>
       </div>
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-dot">❓</div>
-        <span>Häufige Fragen</span>
+
+      <div data-service="voiceagent">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">🎙️</div><span>FAQ · Voice Agent</span></div>
+        <h1>FAQ zum <em>AI Voice Agent</em></h1>
+        <p>Häufig gestellte Fragen rund um den KI-Telefonagenten, Setup und Einsatz in Ihrem Unternehmen.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
+          <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+        </div>
       </div>
-      <h1>Alles, was Sie <em>wissen müssen</em></h1>
-      <p>Häufig gestellte Fragen rund um SwixAI, unsere Agenten und den Einsatz in Ihrem Unternehmen.</p>
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
-        <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
-        <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+
+      <div data-service="chatbot">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">💬</div><span>FAQ · Chat Agent</span></div>
+        <h1>FAQ zum <em>AI Chat Agent</em></h1>
+        <p>Häufig gestellte Fragen rund um den Website-Chatbot, Integration und Anpassungsmöglichkeiten.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Jetzt beraten lassen →</a>
+          <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+        </div>
+      </div>
+
+      <div data-service="webdesign">
+        <div class="hero-eyebrow"><div class="hero-eyebrow-dot">🎨</div><span>FAQ · Webdesign</span></div>
+        <h1>FAQ zum <em>Webdesign</em></h1>
+        <p>Häufig gestellte Fragen rund um Ablauf, Preise, Technologien und Betreuung nach dem Launch.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;animation:hero-fade-up .85s cubic-bezier(.22,1,.36,1) .34s both">
+          <a href="kontakt.html" class="btn btn-gold">Angebot anfragen →</a>
+          <a href="preise.html" class="btn btn-outline">Preise ansehen</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+  <!-- Service Switcher -->
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="service-switcher">
+      <a href="?service=voiceagent" class="service-tab" data-tab="voiceagent">🎙️ Voice Agent</a>
+      <a href="?service=chatbot" class="service-tab" data-tab="chatbot">💬 Chat Agent</a>
+      <a href="?service=webdesign" class="service-tab" data-tab="webdesign">🎨 Webdesign</a>
+    </div>
+  </div>
+
   <!-- FAQ Accordion -->
   <section class="section" style="padding-top:0;" aria-labelledby="faq-heading">
     <h2 class="sr-only" id="faq-heading">Häufig gestellte Fragen</h2>
 
+    <!-- Voice Agent FAQs -->
+    <div data-service="voiceagent">
     <div class="faq-list" role="list">
-
-      <div class="faq-item reveal" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-1">
-          <span class="faq-question">Klingt der KI-Agent wirklich menschlich?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-1" role="region" aria-labelledby="faq-trigger-1">
-          <p class="faq-answer">Ja. Wir verwenden modernste Sprachsynthese-Technologie (ElevenLabs), die von echten Stimmen kaum zu unterscheiden ist. Pausen, Betonungen, natürliche Sprache — alles wirkt authentisch und professionell.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.04s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-2">
-          <span class="faq-question">Wie lange dauert die Einrichtung?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-2" role="region">
-          <p class="faq-answer">Im Schnitt 48 Stunden. Nach einem kurzen Onboarding-Gespräch richten wir alles ein, testen ausgiebig und gehen gemeinsam live. Kein technisches Wissen Ihrerseits erforderlich.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.08s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-3">
-          <span class="faq-question">Was passiert, wenn der Agent eine Frage nicht beantworten kann?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-3" role="region">
-          <p class="faq-answer">Der Agent leitet nahtlos weiter — entweder an einen Mitarbeiter, nimmt eine Nachricht auf oder vereinbart einen Rückruf. Sie entscheiden, wie der Fallback aussieht.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.12s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-4">
-          <span class="faq-question">Welche Telefonnummer wird verwendet?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-4" role="region">
-          <p class="faq-answer">Sie können Ihre bestehende Nummer weiterleiten (Call-Forwarding) oder eine neue Nummer bei uns erhalten. Beides funktioniert nahtlos ohne Anbieterwechsel.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.16s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-5">
-          <span class="faq-question">Sind meine Kundendaten sicher?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-5" role="region">
-          <p class="faq-answer">Ja. Alle Daten werden DSGVO-konform verarbeitet und auf EU-Servern gespeichert. Kein Datentransfer in Drittländer. Transkripte und Aufnahmen bleiben nur in Ihrem Dashboard.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.2s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-6">
-          <span class="faq-question">Kann ich meinen Plan jederzeit wechseln oder kündigen?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-6" role="region">
-          <p class="faq-answer">Ja, jederzeit. Kein Jahresvertrag, keine Kündigungsfristen. Sie können monatlich kündigen oder upgraden.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.24s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-7">
-          <span class="faq-question">Funktioniert SwixAI auch für meinen Chat auf der Website?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-7" role="region">
-          <p class="faq-answer">Ja! Neben dem Voice Agent bieten wir auch einen AI Chat Agent an, der direkt auf Ihrer Website läuft und ebenfalls Termine bucht, Fragen beantwortet und Leads qualifiziert.</p>
-        </div>
-      </div>
-
-      <div class="faq-item reveal" style="transition-delay:0.28s" role="listitem">
-        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-8">
-          <span class="faq-question">In welchen Sprachen kann der Agent sprechen?</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-body" id="faq-body-8" role="region">
-          <p class="faq-answer">Der Agent spricht Deutsch, Englisch, Französisch, Italienisch, Türkisch und Arabisch — je nach gewähltem Plan. Weitere Sprachen auf Anfrage.</p>
-        </div>
-      </div>
-
+      <div class="faq-item reveal" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Klingt der KI-Agent wirklich menschlich?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Wir verwenden modernste Sprachsynthese-Technologie (ElevenLabs), die von echten Stimmen kaum zu unterscheiden ist. Pausen, Betonungen, natürliche Sprache — alles wirkt authentisch und professionell.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.04s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Wie lange dauert die Einrichtung?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Im Schnitt 48 Stunden. Nach einem kurzen Onboarding-Gespräch richten wir alles ein, testen ausgiebig und gehen gemeinsam live. Kein technisches Wissen Ihrerseits erforderlich.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.08s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Was passiert, wenn der Agent eine Frage nicht beantworten kann?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Der Agent leitet nahtlos weiter — entweder an einen Mitarbeiter, nimmt eine Nachricht auf oder vereinbart einen Rückruf. Sie entscheiden, wie der Fallback aussieht.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.12s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Welche Telefonnummer wird verwendet?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Sie können Ihre bestehende Nummer weiterleiten (Call-Forwarding) oder eine neue Nummer bei uns erhalten. Beides funktioniert nahtlos ohne Anbieterwechsel.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.16s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Sind meine Kundendaten sicher?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Alle Daten werden DSGVO-konform verarbeitet und auf EU-Servern gespeichert. Kein Datentransfer in Drittländer. Transkripte und Aufnahmen bleiben nur in Ihrem Dashboard.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.2s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kann ich meinen Plan jederzeit wechseln oder kündigen?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja, jederzeit. Kein Jahresvertrag, keine Kündigungsfristen. Sie können monatlich kündigen oder upgraden.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.24s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Funktioniert SwixAI auch für meinen Chat auf der Website?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja! Neben dem Voice Agent bieten wir auch einen AI Chat Agent an, der direkt auf Ihrer Website läuft und ebenfalls Termine bucht, Fragen beantwortet und Leads qualifiziert.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.28s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">In welchen Sprachen kann der Agent sprechen?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Der Agent spricht Deutsch, Englisch, Französisch, Italienisch, Türkisch und Arabisch — je nach gewähltem Plan. Weitere Sprachen auf Anfrage.</p></div></div>
     </div>
+    </div><!-- /voiceagent -->
+
+    <!-- Chat Agent FAQs -->
+    <div data-service="chatbot">
+    <div class="faq-list" role="list">
+      <div class="faq-item reveal" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Wie wird der Chat-Agent auf meiner Website integriert?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ganz einfach per Embed-Code — ein kurzer Schnipsel HTML, den Sie oder Ihr Webmaster in Ihre Website einfügen. Kein technisches Vorwissen nötig. Wir helfen bei der Integration.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.04s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Wie lange dauert die Einrichtung des Chatbots?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Im Schnitt 24 Stunden. Nach einem kurzen Onboarding-Gespräch trainieren wir den Agenten auf Ihre Inhalte, testen und liefern den fertigen Embed-Code.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.08s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kann der Chat-Agent Termine buchen?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Der Chat-Agent kann direkt in Ihren Kalender (Google Calendar, Calendly u.a.) integriert werden und Termine buchen, bestätigen und verschieben — vollautomatisch.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.12s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Was passiert außerhalb der Öffnungszeiten?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Der Chatbot ist 24/7 aktiv. Außerhalb der Öffnungszeiten beantwortet er Fragen, nimmt Anfragen auf und informiert Kunden, wann sie zurückgerufen werden oder wann Sie wieder erreichbar sind.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.16s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kann ich den Chatbot jederzeit anpassen?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Änderungen an Wissen, Persönlichkeit oder Gesprächsabläufen können jederzeit beantragt werden. Wir passen den Agenten auf Ihre aktuellen Bedürfnisse an — unkompliziert und schnell.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.2s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Sind die Chatdaten meiner Kunden sicher?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Alle Daten werden DSGVO-konform auf EU-Servern gespeichert. Gesprächsdaten bleiben in Ihrem persönlichen Dashboard und werden nicht an Dritte weitergegeben.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.24s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">In welchen Sprachen antwortet der Chat-Agent?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Der Agent erkennt automatisch die Sprache des Nutzers und antwortet entsprechend — Deutsch, Englisch, Französisch, Italienisch und mehr. Weitere Sprachen auf Anfrage.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.28s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kann ich meinen Plan jederzeit kündigen?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja, jederzeit. Kein Jahresvertrag, keine langen Kündigungsfristen. Sie können monatlich kündigen oder jederzeit auf einen anderen Plan wechseln.</p></div></div>
+    </div>
+    </div><!-- /chatbot -->
+
+    <!-- Webdesign FAQs -->
+    <div data-service="webdesign">
+    <div class="faq-list" role="list">
+      <div class="faq-item reveal" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Wie lange dauert die Erstellung meiner Website?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Abhängig vom Umfang: Eine Landing Page ist in 1–2 Wochen fertig, ein Mehrseiter mit 5–7 Seiten in 2–3 Wochen. Komplexere Projekte werden individuell geplant.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.04s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kann ich meine Website nach dem Launch selbst bearbeiten?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Auf Wunsch integrieren wir ein einfaches CMS (Content Management System), mit dem Sie Texte, Bilder und Inhalte selbst ändern können — ohne Programmierkenntnisse.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.08s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Ist meine Website mobiloptimiert?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja, immer. Alle unsere Websites sind responsive — sie sehen auf Smartphone, Tablet und Desktop perfekt aus. Mobile-First ist für uns Standard, kein Extra.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.12s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kümmern Sie sich auch um SEO?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Jede Website wird mit SEO-Grundoptimierung ausgeliefert: Seitenstruktur, Meta-Tags, schnelle Ladezeiten und sauberer Code. Erweiterte SEO-Pakete sind auf Anfrage verfügbar.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.16s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Was passiert nach dem Launch?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Sie erhalten 30 Tage After-Launch Support inklusive. Danach bieten wir optionale Wartungs- und Betreuungspakete — für Updates, Änderungen und technischen Support.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.2s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Kann ich meine bestehende Domain behalten?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Wir arbeiten mit Ihrer bestehenden Domain oder helfen Ihnen, eine neue zu registrieren. Domaintransfer und DNS-Einrichtung übernehmen wir für Sie.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.24s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Welche Technologien verwenden Sie?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Wir bauen auf modernen, bewährten Technologien — HTML, CSS, JavaScript und je nach Anforderung Next.js, React oder klassische CMS-Lösungen. Immer schnell, sicher und wartungsfreundlich.</p></div></div>
+      <div class="faq-item reveal" style="transition-delay:0.28s" role="listitem"><button class="faq-trigger" aria-expanded="false"><span class="faq-question">Ist die Website DSGVO-konform?</span><span class="faq-icon">+</span></button><div class="faq-body"><p class="faq-answer">Ja. Alle Websites werden mit Cookie-Hinweis, Datenschutzerklärung und DSGVO-konformen Formularen ausgeliefert. Auf Wunsch helfen wir auch bei der vollständigen rechtlichen Absicherung.</p></div></div>
+    </div>
+    </div><!-- /webdesign -->
+
   </section>
 
   <!-- Still have questions? -->
@@ -799,6 +796,14 @@ function toggleMenu(){
   if(l.style.display==='flex'){l.style.display='';a.style.display=''}
   else{l.style.cssText='display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);z-index:99';a.style.cssText='display:flex;flex-direction:column;position:fixed;top:calc(70px + 170px);left:0;right:0;background:rgba(10,11,15,.97);padding:0 24px 24px;z-index:99;gap:10px'}
 }
+// Service router
+(function(){
+  var service=new URLSearchParams(location.search).get('service')||'voiceagent';
+  document.querySelectorAll('.service-tab[data-tab]').forEach(function(t){t.classList.toggle('active',t.dataset.tab===service)});
+  ['prozess.html','branchen.html','preise.html','faq.html'].forEach(function(p){
+    document.querySelectorAll('a[href="'+p+'"]').forEach(function(a){a.href=p+'?service='+service});
+  });
+})();
 </script>
 
 </body>
