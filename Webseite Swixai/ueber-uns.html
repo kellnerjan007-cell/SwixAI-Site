@@ -35,13 +35,8 @@ strong { color: var(--text); font-weight: 600; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 36px; }
 
 /* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 22px 0;
-  background: rgba(8,9,13,0.85);
-  backdrop-filter: blur(20px) saturate(1.4);
-  border-bottom: 1px solid var(--border);
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .3s ease}
+nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid var(--border);padding:14px 0}
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { font-family: var(--ff-serif); font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
 .nav-logo span { color: var(--gold); font-style: italic; }
@@ -368,7 +363,7 @@ footer { background: var(--ink); border-top: 1px solid var(--border); padding: 6
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <div class="container">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Swix<span>AI</span></a>
@@ -670,6 +665,8 @@ const obs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
 </script>
 </body>
 </html>
