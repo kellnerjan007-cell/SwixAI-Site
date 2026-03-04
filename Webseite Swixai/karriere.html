@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karriere — SwixAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0A0B0F; --ink2: #111318; --ink3: #181C25; --ink4: #1F2535;
+  --gold: #C8A96E; --gold2: #E2C898; --emerald: #1DB87A; --rose: #E8445A;
+  --text: #F0EDE8; --text2: #9098AD; --text3: #50596B;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+  --ff-serif: 'Fraunces', Georgia, serif; --ff-body: 'Geist', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--ink); color: var(--text); font-family: var(--ff-body); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 1000; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink2); } ::-webkit-scrollbar-thumb { background: var(--ink4); border-radius: 3px; }
+h1,h2,h3,h4 { font-family: var(--ff-serif); font-weight: 300; line-height: 1.15; }
+p { color: var(--text2); }
+a { color: inherit; text-decoration: none; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-family: var(--ff-body); }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,11,15,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: var(--ff-serif); font-size: 24px; font-weight: 600; color: var(--text); }
+.nav-logo span { color: var(--gold); font-style: italic; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; color: var(--text2); transition: color 0.18s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a{position:relative}.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .22s}.nav-links a:hover::after{transform:scaleX(1)}.nav-has-dropdown{position:relative}.nav-has-dropdown::after{content:"";position:absolute;top:100%;left:-10px;right:-10px;height:20px}.nav-dropdown-trigger{display:flex;align-items:center;gap:5px;cursor:pointer}.nav-dropdown-chevron{font-size:9px;color:#50596B;transition:transform .25s;display:inline-block}.nav-has-dropdown:hover .nav-dropdown-chevron{transform:rotate(180deg)}.nav-dropdown{position:absolute;top:calc(100% + 20px);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(9,10,14,.97);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:8px;min-width:268px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s,visibility .22s,transform .22s;backdrop-filter:blur(24px);box-shadow:0 28px 64px rgba(0,0,0,.65);z-index:200}.nav-has-dropdown:hover .nav-dropdown{opacity:1;visibility:visible;pointer-events:all;transform:translateX(-50%) translateY(0)}.nav-dropdown::before{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%) rotate(45deg);width:9px;height:9px;background:rgba(9,10,14,.97);border-left:1px solid rgba(255,255,255,.12);border-top:1px solid rgba(255,255,255,.12)}.nav-dropdown-item{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:12px;transition:background .15s,transform .15s;text-decoration:none;color:inherit}.nav-dropdown-item:hover{background:rgba(200,169,110,.07);transform:translateX(3px)}.nav-dropdown-icon{width:38px;height:38px;border-radius:10px;background:rgba(200,169,110,.08);border:1px solid rgba(200,169,110,.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}.nav-dropdown-title{font-size:13.5px;font-weight:600;color:#F0EDE8;margin-bottom:2px}.nav-dropdown-desc{font-size:11.5px;color:#50596B;line-height:1.3}.nav-dropdown-divider{height:1px;background:rgba(255,255,255,.07);margin:5px 6px}
+.nav-actions { display: flex; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 100px; font-family: var(--ff-body); font-size: 13px; font-weight: 500; cursor: pointer; border: none; transition: all 0.22s; }
+.btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--ink); font-weight: 600; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,169,110,0.35); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+.btn-outline:hover { background: var(--ink3); border-color: var(--gold); color: var(--gold); }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+footer { background: var(--ink); border-top: 1px solid var(--border); padding: 64px 0 32px; margin-top: 80px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+.footer-logo { font-family: var(--ff-serif); font-size: 26px; font-weight: 600; color: var(--text); display: block; margin-bottom: 14px; }
+.footer-logo span { color: var(--gold); font-style: italic; }
+.footer-brand p { font-size: 14px; color: var(--text2); line-height: 1.75; max-width: 280px; }
+.footer-col h5 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a { font-size: 14px; color: var(--text3); transition: color 0.18s; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-bottom { padding-top: 28px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.footer-bottom p { font-size: 13px; color: var(--text3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--text3); transition: color 0.18s; }
+
+/* PAGE HERO */
+.page-hero { padding: 160px 0 100px; position: relative; overflow: hidden; text-align: center; }
+.page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(200,169,110,0.1) 0%, transparent 60%); pointer-events: none; }
+.page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 80%); pointer-events: none; }
+.hero-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+
+/* PERKS */
+.perks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 80px; }
+.perk-card { background: var(--ink2); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.22s; }
+.perk-card:hover { border-color: rgba(200,169,110,0.3); transform: translateY(-4px); }
+.perk-icon { font-size: 32px; margin-bottom: 14px; }
+.perk-card h3 { font-family: var(--ff-body); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.perk-card p { font-size: 14px; line-height: 1.7; }
+
+/* NO JOBS */
+.no-jobs-box { max-width: 680px; margin: 0 auto; background: var(--ink2); border: 1px solid var(--border2); border-radius: 24px; padding: 64px 48px; text-align: center; position: relative; overflow: hidden; }
+.no-jobs-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.no-jobs-emoji { font-size: 64px; margin-bottom: 24px; display: block; animation: float 4s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.no-jobs-box h2 { font-size: 32px; color: var(--text); margin-bottom: 16px; }
+.no-jobs-box p { font-size: 16px; line-height: 1.8; max-width: 480px; margin: 0 auto 32px; }
+.no-jobs-box .highlight { background: rgba(200,169,110,0.08); border: 1px solid rgba(200,169,110,0.2); border-radius: 14px; padding: 20px 24px; margin-bottom: 32px; font-size: 15px; color: var(--text); line-height: 1.7; }
+
+/* INITIATIVE */
+.initiative-section { max-width: 720px; margin: 80px auto 0; }
+.initiative-card { background: var(--ink3); border: 1px solid var(--border2); border-radius: 24px; padding: 48px; }
+.initiative-card h3 { font-size: 28px; color: var(--text); margin-bottom: 16px; }
+.initiative-card p { font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
+.initiative-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.initiative-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text2); }
+.initiative-item::before { content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+.email-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--ink); font-weight: 700; padding: 14px 32px; border-radius: 100px; font-size: 15px; transition: all 0.22s; }
+.email-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,169,110,0.35); }
+
+@media(max-width:768px){ .container{padding:0 20px;} .nav-links{display:none;} .perks-grid{grid-template-columns:1fr;} .footer-grid{grid-template-columns:1fr 1fr; gap:32px;} .footer-bottom{flex-direction:column;gap:16px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Swix<span>AI</span></a>
+      <ul class="nav-links">
+        <li class="nav-has-dropdown">
+          <a href="angebote.html" class="nav-dropdown-trigger">Angebote <span class="nav-dropdown-chevron">▾</span></a>
+          <div class="nav-dropdown">
+            <a href="ki-voice-agent.html" class="nav-dropdown-item"><div class="nav-dropdown-icon">🎙️</div><div><div class="nav-dropdown-title">AI Voice Agent</div><div class="nav-dropdown-desc">KI-Telefonie rund um die Uhr</div></div></a>
+            <a href="ki-chat-agent.html" class="nav-dropdown-item"><div class="nav-dropdown-icon">💬</div><div><div class="nav-dropdown-title">AI Chat Agent</div><div class="nav-dropdown-desc">Intelligenter Chat-Support 24/7</div></div></a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="webdesign.html" class="nav-dropdown-item"><div class="nav-dropdown-icon">🎨</div><div><div class="nav-dropdown-title">Webdesign</div><div class="nav-dropdown-desc">Moderne Websites & Web-Apps</div></div></a>
+          </div>
+        </li>
+        <li><a href="prozess.html">Prozess</a></li>
+        <li><a href="branchen.html">Branchen</a></li>
+        <li><a href="preise.html">Preise</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="kontakt.html" class="btn btn-gold">Kostenlos starten</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <span class="label" style="display:block;margin-bottom:16px">Karriere</span>
+      <h1 style="font-size:clamp(40px,5vw,64px); color:var(--text); margin-bottom:20px; letter-spacing:-0.02em;">Bau mit uns die <em style="color:var(--gold)">Zukunft der Telefonie</em></h1>
+      <p style="font-size:17px; color:var(--text2); line-height:1.75;">Wir sind ein kleines, ambitioniertes Team mit großen Zielen. Wenn du KI, Sprachtechnologie und echten Impact liebst — bist du bei uns richtig.</p>
+    </div>
+  </div>
+</div>
+
+<section style="padding:80px 0;">
+  <div class="container">
+
+    <!-- No open positions -->
+    <div class="no-jobs-box reveal">
+      <span class="no-jobs-emoji">🔭</span>
+      <h2>Aktuell keine offenen Stellen</h2>
+      <p>Im Moment haben wir keine ausgeschriebenen Positionen — aber das kann sich schnell ändern. Wir wachsen und suchen laufend nach außergewöhnlichen Menschen.</p>
+      <div class="highlight">
+        ✨ Wir freuen uns <strong>jederzeit</strong> über eine <strong>Initiativbewerbung</strong>.<br>
+        Wenn du glaubst, dass du zu SwixAI passt — schreib uns einfach. Wir lesen jede Bewerbung persönlich.
+      </div>
+    </div>
+
+    <!-- Initiative application -->
+    <div class="initiative-section">
+      <div class="initiative-card reveal">
+        <h3>Initiativbewerbung einreichen</h3>
+        <p>Du musst nicht auf eine offene Stelle warten. Wenn du brennst für KI, Voice-Technologie, Sales, Marketing oder Product — meld dich direkt. Wir suchen immer nach Menschen, die etwas bewegen wollen.</p>
+        <div class="initiative-list">
+          <div class="initiative-item">Zeig uns, wer du bist und was dich antreibt</div>
+          <div class="initiative-item">Erzähl uns, in welchem Bereich du dich siehst</div>
+          <div class="initiative-item">Schick uns gerne Beispiele deiner Arbeit</div>
+          <div class="initiative-item">Kein aufgeblasenes CV nötig — Authentizität ist uns wichtiger</div>
+        </div>
+        <a href="mailto:office@swixai.info?subject=Initiativbewerbung" class="email-btn">
+          ✉️ Initiativbewerbung senden
+        </a>
+        <p style="font-size:13px; color:var(--text3); margin-top:16px; margin-bottom:0;">office@swixai.info · Wir antworten innerhalb von 48 Stunden</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Swix<span>AI</span></a>
+        <p>KI-Telefonie für moderne Unternehmen.</p>
+      </div>
+      <div class="footer-col"><h5>Angebote</h5><ul>
+        <li><a href="ki-voice-agent.html">AI Voice Agent</a></li>
+        <li><a href="ki-chat-agent.html">AI Chat Agent</a></li>
+        <li><a href="webdesign.html">Webdesign</a></li>
+        <li><a href="preise.html">Preise</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Unternehmen</h5><ul>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="karriere.html">Karriere</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Rechtliches</h5><ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="agb.html">AGB</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SwixAI · Alle Rechte vorbehalten · Made in Switzerland 🇨🇭</p>
+      <div class="footer-links">
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

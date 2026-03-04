@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie-Richtlinie — SwixAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink: #0A0B0F; --ink2: #111318; --ink3: #181C25; --ink4: #1F2535; --gold: #C8A96E; --gold2: #E2C898; --emerald: #1DB87A; --text: #F0EDE8; --text2: #9098AD; --text3: #50596B; --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12); --ff-serif: 'Fraunces', Georgia, serif; --ff-body: 'Geist', system-ui, sans-serif; }
+body { background: var(--ink); color: var(--text); font-family: var(--ff-body); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 1000; }
+h1,h2,h3 { font-family: var(--ff-serif); font-weight: 300; }
+p { color: var(--text2); }
+a { color: var(--gold); }
+.container { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,11,15,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.nav-logo { font-family: var(--ff-serif); font-size: 24px; font-weight: 600; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--gold); font-style: italic; }
+.back-link { font-size: 14px; color: var(--text2); display: flex; align-items: center; gap: 6px; transition: color 0.18s; text-decoration: none; }
+.back-link:hover { color: var(--gold); }
+.page-wrap { padding: 140px 0 100px; }
+.page-title { font-size: clamp(36px, 4vw, 52px); color: var(--text); margin-bottom: 8px; letter-spacing: -0.02em; }
+.page-date { font-size: 13px; color: var(--text3); margin-bottom: 56px; }
+.legal-section { margin-bottom: 44px; padding-bottom: 44px; border-bottom: 1px solid var(--border); }
+.legal-section:last-child { border-bottom: none; }
+.legal-section h2 { font-size: 22px; color: var(--text); margin-bottom: 14px; }
+.legal-section p { font-size: 15px; line-height: 1.8; margin-bottom: 12px; }
+.cookie-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+.cookie-table th { text-align: left; padding: 12px 16px; background: var(--ink3); color: var(--text2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; border-bottom: 1px solid var(--border2); }
+.cookie-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; }
+.cookie-table tr:last-child td { border-bottom: none; }
+.cookie-table tr:hover td { background: rgba(255,255,255,0.015); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.badge-green { background: rgba(29,184,122,0.12); color: var(--emerald); }
+.badge-amber { background: rgba(245,158,11,0.12); color: #F59E0B; }
+.toggle-group { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; background: var(--ink2); border: 1px solid var(--border); border-radius: 14px; }
+.toggle-info h4 { font-family: var(--ff-body); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.toggle-info p { font-size: 13px; margin: 0; }
+.toggle { position: relative; width: 44px; height: 24px; cursor: pointer; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.t-track { position: absolute; inset: 0; background: var(--ink3); border: 1px solid var(--border2); border-radius: 20px; transition: all 0.2s; }
+.toggle input:checked + .t-track { background: var(--emerald); border-color: var(--emerald); }
+.toggle input:disabled + .t-track { background: rgba(29,184,122,0.5); }
+.t-thumb { position: absolute; width: 18px; height: 18px; background: #fff; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
+.toggle input:checked ~ .t-thumb { transform: translateX(20px); }
+.save-btn { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: var(--ink); font-weight: 700; border: none; border-radius: 100px; padding: 12px 28px; font-family: var(--ff-body); font-size: 14px; cursor: pointer; transition: all 0.22s; margin-top: 20px; }
+.save-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,169,110,0.35); }
+footer { background: var(--ink); border-top: 1px solid var(--border); padding: 40px 0; margin-top: 60px; text-align: center; }
+footer p { font-size: 13px; color: var(--text3); }
+.footer-links-row { display: flex; justify-content: center; gap: 24px; margin-top: 12px; }
+.footer-links-row a { font-size: 13px; color: var(--text3); }
+.footer-links-row a:hover { color: var(--gold); text-decoration: none; }
+@media(max-width:600px){ .container{padding:0 20px;} .cookie-table{font-size:12px;} .cookie-table th,.cookie-table td{padding:10px;} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Swix<span>AI</span></a>
+    <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container">
+    <h1 class="page-title">Cookie-Richtlinie</h1>
+    <p class="page-date">Stand: Februar 2026 · SwixAI, Zürich</p>
+
+    <div class="legal-section">
+      <h2>Was sind Cookies?</h2>
+      <p>Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden, wenn Sie unsere Website besuchen. Sie helfen uns, Ihnen eine bessere und personalisiertere Erfahrung zu bieten und technische Funktionen sicherzustellen.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Ihre Cookie-Einstellungen</h2>
+      <p style="margin-bottom:20px">Sie können jederzeit anpassen, welche Cookies wir setzen dürfen:</p>
+      <div class="toggle-group">
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <h4>✅ Notwendige Cookies <span class="badge badge-green">Immer aktiv</span></h4>
+            <p>Diese Cookies sind für den Betrieb der Website unbedingt erforderlich und können nicht deaktiviert werden.</p>
+          </div>
+          <label class="toggle"><input type="checkbox" checked disabled /><div class="t-track"></div><div class="t-thumb"></div></label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <h4>📊 Analyse-Cookies <span class="badge badge-amber">Optional</span></h4>
+            <p>Helfen uns zu verstehen, wie Besucher die Website nutzen. Alle Daten sind anonymisiert.</p>
+          </div>
+          <label class="toggle"><input type="checkbox" id="analytics" /><div class="t-track"></div><div class="t-thumb"></div></label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <h4>🎯 Marketing-Cookies <span class="badge badge-amber">Optional</span></h4>
+            <p>Ermöglichen es uns, relevante Werbung auszuspielen und die Effektivität unserer Kampagnen zu messen.</p>
+          </div>
+          <label class="toggle"><input type="checkbox" id="marketing" /><div class="t-track"></div><div class="t-thumb"></div></label>
+        </div>
+      </div>
+      <button class="save-btn" onclick="savePrefs()">Einstellungen speichern</button>
+    </div>
+
+    <div class="legal-section">
+      <h2>Notwendige Cookies</h2>
+      <p>Diese Cookies sind technisch erforderlich und können nicht deaktiviert werden.</p>
+      <table class="cookie-table">
+        <thead><tr><th>Name</th><th>Zweck</th><th>Dauer</th></tr></thead>
+        <tbody>
+          <tr><td><code>session_id</code></td><td>Authentifizierung und Sitzungsverwaltung</td><td>Session</td></tr>
+          <tr><td><code>csrf_token</code></td><td>Schutz vor Cross-Site-Request-Forgery</td><td>Session</td></tr>
+          <tr><td><code>cookie_consent</code></td><td>Speichert Ihre Cookie-Einstellungen</td><td>1 Jahr</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legal-section">
+      <h2>Analyse-Cookies</h2>
+      <p>Mit Ihrer Einwilligung setzen wir folgende Analyse-Cookies:</p>
+      <table class="cookie-table">
+        <thead><tr><th>Name</th><th>Anbieter</th><th>Zweck</th><th>Dauer</th></tr></thead>
+        <tbody>
+          <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Unterscheidung von Nutzern (anonymisiert)</td><td>2 Jahre</td></tr>
+          <tr><td><code>_ga_*</code></td><td>Google Analytics</td><td>Sitzungsstatus</td><td>2 Jahre</td></tr>
+          <tr><td><code>ph_*</code></td><td>PostHog</td><td>Produktanalyse (EU-Server)</td><td>1 Jahr</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legal-section">
+      <h2>Marketing-Cookies</h2>
+      <p>Mit Ihrer Einwilligung setzen wir folgende Marketing-Cookies:</p>
+      <table class="cookie-table">
+        <thead><tr><th>Name</th><th>Anbieter</th><th>Zweck</th><th>Dauer</th></tr></thead>
+        <tbody>
+          <tr><td><code>_fbp</code></td><td>Meta (Facebook)</td><td>Conversion-Tracking für Anzeigen</td><td>3 Monate</td></tr>
+          <tr><td><code>_gcl_au</code></td><td>Google Ads</td><td>Messung der Anzeigen-Conversion</td><td>3 Monate</td></tr>
+          <tr><td><code>li_fat_id</code></td><td>LinkedIn</td><td>Tracking für LinkedIn-Kampagnen</td><td>30 Tage</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legal-section">
+      <h2>Cookies löschen</h2>
+      <p>Sie können Cookies jederzeit in Ihrem Browser löschen oder deren Speicherung verhindern. Anleitungen für gängige Browser:</p>
+      <ul style="margin:12px 0 12px 20px;color:var(--text2);font-size:15px;line-height:1.8;">
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+        <li><a href="https://support.apple.com/de-de/guide/safari/sfri11471/mac" target="_blank">Apple Safari</a></li>
+        <li><a href="https://support.mozilla.org/de/kb/cookies-loeschen-daten-von-websites-entfernen" target="_blank">Mozilla Firefox</a></li>
+        <li><a href="https://support.microsoft.com/de-de/microsoft-edge/cookies-in-microsoft-edge-löschen-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank">Microsoft Edge</a></li>
+      </ul>
+      <p>Bitte beachten Sie, dass das Deaktivieren von Cookies die Funktionalität unserer Website beeinträchtigen kann.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Kontakt</h2>
+      <p>Bei Fragen zu unserer Cookie-Richtlinie wenden Sie sich bitte an: <a href="mailto:office@swixai.info">office@swixai.info</a></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SwixAI · Made in Switzerland 🇨🇭</p>
+  <div class="footer-links-row">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="agb.html">AGB</a>
+    <a href="index.html">Startseite</a>
+  </div>
+</footer>
+
+<script>
+function savePrefs() {
+  const btn = document.querySelector('.save-btn');
+  btn.textContent = '✓ Gespeichert!';
+  setTimeout(() => { btn.textContent = 'Einstellungen speichern'; }, 2000);
+}
+</script>
+</body>
+</html>

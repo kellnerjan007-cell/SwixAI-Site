@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz — SwixAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink: #0A0B0F; --ink2: #111318; --ink3: #181C25; --ink4: #1F2535; --gold: #C8A96E; --gold2: #E2C898; --text: #F0EDE8; --text2: #9098AD; --text3: #50596B; --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12); --ff-serif: 'Fraunces', Georgia, serif; --ff-body: 'Geist', system-ui, sans-serif; }
+body { background: var(--ink); color: var(--text); font-family: var(--ff-body); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 1000; }
+h1,h2,h3 { font-family: var(--ff-serif); font-weight: 300; }
+p { color: var(--text2); }
+a { color: var(--gold); }
+a:hover { text-decoration: underline; }
+.container { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,11,15,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.nav-logo { font-family: var(--ff-serif); font-size: 24px; font-weight: 600; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--gold); font-style: italic; }
+.back-link { font-size: 14px; color: var(--text2); display: flex; align-items: center; gap: 6px; transition: color 0.18s; text-decoration: none; }
+.back-link:hover { color: var(--gold); }
+.page-wrap { padding: 140px 0 100px; }
+.page-title { font-size: clamp(36px, 4vw, 52px); color: var(--text); margin-bottom: 8px; letter-spacing: -0.02em; }
+.page-date { font-size: 13px; color: var(--text3); margin-bottom: 56px; }
+.legal-section { margin-bottom: 44px; padding-bottom: 44px; border-bottom: 1px solid var(--border); }
+.legal-section:last-child { border-bottom: none; }
+.legal-section h2 { font-size: 22px; color: var(--text); margin-bottom: 14px; }
+.legal-section h3 { font-family: var(--ff-body); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; margin-top: 22px; }
+.legal-section p { font-size: 15px; line-height: 1.8; margin-bottom: 12px; }
+.legal-section ul { margin: 12px 0 12px 20px; color: var(--text2); font-size: 15px; line-height: 1.8; }
+.legal-section ul li { margin-bottom: 6px; }
+.highlight-box { background: rgba(200,169,110,0.06); border: 1px solid rgba(200,169,110,0.18); border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+.highlight-box p { font-size: 14px; color: var(--text2); margin: 0; }
+footer { background: var(--ink); border-top: 1px solid var(--border); padding: 40px 0; margin-top: 60px; text-align: center; }
+footer p { font-size: 13px; color: var(--text3); }
+.footer-links-row { display: flex; justify-content: center; gap: 24px; margin-top: 12px; }
+.footer-links-row a { font-size: 13px; color: var(--text3); }
+.footer-links-row a:hover { color: var(--gold); text-decoration: none; }
+@media(max-width:600px){ .container{padding:0 20px;} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Swix<span>AI</span></a>
+    <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container">
+    <h1 class="page-title">Datenschutzerklärung</h1>
+    <p class="page-date">Stand: Februar 2026 · SwixAI, Zürich</p>
+
+    <div class="highlight-box">
+      <p>🔒 Ihre Daten sind bei uns sicher. SwixAI verarbeitet personenbezogene Daten ausschließlich gemäß der DSGVO (EU) und dem Schweizer Datenschutzgesetz (DSG). Alle Daten werden auf Servern in der EU bzw. der Schweiz gespeichert.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>1. Verantwortlicher</h2>
+      <p>Verantwortlicher für die Datenverarbeitung ist:<br><strong style="color:var(--text)">SwixAI</strong>, Zürich, Schweiz<br>E-Mail: <a href="mailto:office@swixai.info">office@swixai.info</a><br>Telefon: <a href="tel:+41786669218">+41 78 666 92 18</a></p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Welche Daten wir erheben</h2>
+      <h3>2.1 Bei Besuch unserer Website</h3>
+      <p>Beim Aufruf unserer Website werden automatisch folgende Daten erhoben:</p>
+      <ul>
+        <li>IP-Adresse (anonymisiert)</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Aufgerufene Seiten und Verweildauer</li>
+        <li>Browser-Typ und Betriebssystem</li>
+        <li>Referrer-URL</li>
+      </ul>
+      <h3>2.2 Bei Nutzung unseres Dienstes</h3>
+      <ul>
+        <li>Name, E-Mail-Adresse, Telefonnummer (bei Registrierung)</li>
+        <li>Unternehmensname und Branche</li>
+        <li>Anrufprotokolle und Transkripte (verschlüsselt gespeichert)</li>
+        <li>Zahlungsdaten (verarbeitet durch zertifizierte Zahlungsanbieter)</li>
+      </ul>
+      <h3>2.3 Anruf- und Transkript-Daten</h3>
+      <p>Im Rahmen unseres KI-Telefonieservice werden Gespräche aufgezeichnet und transkribiert. Diese Daten gehören ausschließlich Ihnen und werden nicht an Dritte weitergegeben. Sie können jederzeit die Löschung beantragen.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. Zweck der Datenverarbeitung</h2>
+      <p>Wir verarbeiten Ihre Daten für folgende Zwecke:</p>
+      <ul>
+        <li>Bereitstellung und Verbesserung unserer Dienste</li>
+        <li>Abrechnung und Vertragserfüllung</li>
+        <li>Kundensupport und Kommunikation</li>
+        <li>Sicherheit und Betrugsprävention</li>
+        <li>Analyse zur Verbesserung der KI-Qualität (anonymisiert)</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Rechtsgrundlage</h2>
+      <p>Die Verarbeitung erfolgt auf Basis von:</p>
+      <ul>
+        <li><strong style="color:var(--text)">Art. 6 Abs. 1 lit. b DSGVO</strong> — Vertragserfüllung</li>
+        <li><strong style="color:var(--text)">Art. 6 Abs. 1 lit. a DSGVO</strong> — Einwilligung (z.B. Newsletter)</li>
+        <li><strong style="color:var(--text)">Art. 6 Abs. 1 lit. f DSGVO</strong> — Berechtigtes Interesse</li>
+        <li><strong style="color:var(--text)">Art. 6 Abs. 1 lit. c DSGVO</strong> — Gesetzliche Verpflichtung</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Datenweitergabe</h2>
+      <p>Wir geben Ihre Daten nicht an unbefugte Dritte weiter. Eine Weitergabe erfolgt ausschließlich an:</p>
+      <ul>
+        <li>Auftragsverarbeiter (z.B. Cloud-Anbieter) mit entsprechenden Verträgen</li>
+        <li>Zahlungsdienstleister (verschlüsselt, PCI-DSS-konform)</li>
+        <li>Behörden, wenn gesetzlich vorgeschrieben</li>
+      </ul>
+      <p>Alle Dienstleister sind vertraglich zur DSGVO-konformen Verarbeitung verpflichtet.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Speicherdauer</h2>
+      <p>Wir speichern Ihre Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist:</p>
+      <ul>
+        <li>Anruf-Transkripte: 90 Tage (konfigurierbar)</li>
+        <li>Buchungsdaten: 7 Jahre (gesetzliche Aufbewahrungspflicht)</li>
+        <li>Website-Logs: 30 Tage</li>
+        <li>Kundenkonto: bis zur Kündigung + 30 Tage</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Ihre Rechte</h2>
+      <p>Sie haben das Recht auf:</p>
+      <ul>
+        <li><strong style="color:var(--text)">Auskunft</strong> — welche Daten wir über Sie speichern</li>
+        <li><strong style="color:var(--text)">Berichtigung</strong> — unrichtiger Daten</li>
+        <li><strong style="color:var(--text)">Löschung</strong> — Ihrer Daten ("Recht auf Vergessenwerden")</li>
+        <li><strong style="color:var(--text)">Einschränkung</strong> — der Verarbeitung</li>
+        <li><strong style="color:var(--text)">Datenportabilität</strong> — Export Ihrer Daten</li>
+        <li><strong style="color:var(--text)">Widerspruch</strong> — gegen die Verarbeitung</li>
+      </ul>
+      <p>Zur Ausübung Ihrer Rechte: <a href="mailto:office@swixai.info">office@swixai.info</a></p>
+    </div>
+
+    <div class="legal-section">
+      <h2>8. Cookies</h2>
+      <p>Wir verwenden Cookies. Detaillierte Informationen finden Sie in unserer <a href="cookies.html">Cookie-Richtlinie</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>9. Beschwerderecht</h2>
+      <p>Sie haben das Recht, sich bei der zuständigen Datenschutzbehörde zu beschweren. In der Schweiz ist dies der <a href="https://www.edoeb.admin.ch" target="_blank">Eidgenössische Datenschutz- und Öffentlichkeitsbeauftragte (EDÖB)</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>10. Änderungen</h2>
+      <p>Wir behalten uns vor, diese Datenschutzerklärung zu aktualisieren. Die aktuelle Version ist stets auf dieser Seite abrufbar. Bei wesentlichen Änderungen informieren wir Sie per E-Mail.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SwixAI · Made in Switzerland 🇨🇭</p>
+  <div class="footer-links-row">
+    <a href="impressum.html">Impressum</a>
+    <a href="agb.html">AGB</a>
+    <a href="cookies.html">Cookies</a>
+    <a href="index.html">Startseite</a>
+  </div>
+</footer>
+</body>
+</html>
