@@ -53,8 +53,8 @@
     }
 
     @keyframes logo-glow {
-      0%, 100% { text-shadow: 0 0 12px rgba(200,169,110,0.4), 0 0 32px rgba(200,169,110,0.2); }
-      50%       { text-shadow: 0 0 20px rgba(200,169,110,0.7), 0 0 48px rgba(200,169,110,0.35); }
+      0%, 100% { text-shadow: none; }
+      50%       { text-shadow: 0 0 24px rgba(200,169,110,0.25); }
     }
 
     @keyframes eyebrow-pulse {
@@ -94,6 +94,7 @@
     }
 
     /* NAV */
+.container{max-width:1180px;margin:0 auto;padding:0 32px}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .3s ease}
 nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid var(--border);padding:14px 0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between}
