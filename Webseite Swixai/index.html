@@ -2346,9 +2346,10 @@ if (statBand) statObs.observe(statBand);
     var t=_swxTyping();
     try{
       var r=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:_hist})});
+      if(!r.ok){var et=await r.text();console.error('SWX err',r.status,et);throw new Error('HTTP '+r.status);}
       var d=await r.json();
       t.remove();
-      var rep=d.reply||'Entschuldigung, es gab einen Fehler. Bitte kontaktieren Sie uns unter hallo@swixai.com.';
+      var rep=d.reply||d.error||'Entschuldigung, es gab einen Fehler. Bitte kontaktieren Sie uns unter hallo@swixai.com.';
       _hist.push({role:'assistant',content:rep});
       _swxAdd('ai',rep);
     }catch(e){t.remove();_swxAdd('ai','Verbindungsfehler. Bitte versuchen Sie es erneut oder schreiben Sie uns an hallo@swixai.com.');}
