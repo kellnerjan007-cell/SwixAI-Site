@@ -525,7 +525,7 @@ nav.scrolled{background:rgba(10,11,15,.88);backdrop-filter:blur(16px) saturate(1
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-      .nav-links{display:none}.hamburger{display:flex}
+      .nav-links{display:none}.nav-actions{display:none}.hamburger{display:flex}.nav-links.mobile-open{display:flex;flex-direction:column;position:fixed;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:16px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:99}.mobile-action-btn{display:block;text-align:center;padding:10px 0;font-size:14px}
     }
     @media (max-width: 900px) {
       .pricing-grid { grid-template-columns: 1fr; }
@@ -1046,11 +1046,8 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 const reveals=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 reveals.forEach(el=>obs.observe(el));
-function toggleMenu(){
-  const l=document.querySelector('.nav-links'),a=document.querySelector('.nav-actions');
-  if(l.style.display==='flex'){l.style.display='';a.style.display=''}
-  else{l.style.cssText='display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:20px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);z-index:99';a.style.cssText='display:flex;flex-direction:column;position:fixed;top:calc(70px + 170px);left:0;right:0;background:rgba(10,11,15,.97);padding:0 24px 24px;z-index:99;gap:10px'}
-}
+function toggleMenu(){const links=document.querySelector('.nav-links'),nav=document.querySelector('nav');const isOpen=links.classList.contains('mobile-open');if(isOpen){links.classList.remove('mobile-open');links.style.top='';links.querySelectorAll('.mobile-action-btn').forEach(el=>el.remove())}else{links.style.top=nav.getBoundingClientRect().height+'px';document.querySelectorAll('.nav-actions a').forEach(btn=>{const clone=btn.cloneNode(true);clone.classList.add('mobile-action-btn');links.appendChild(clone)});links.classList.add('mobile-open')}}
+document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{const links=document.querySelector('.nav-links');if(links){links.classList.remove('mobile-open');links.style.top='';links.querySelectorAll('.mobile-action-btn').forEach(el=>el.remove())}})});
 // Service router
 (function(){
   var service=new URLSearchParams(location.search).get('service')||'voiceagent';

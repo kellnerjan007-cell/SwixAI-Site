@@ -73,7 +73,8 @@ select.form-input { cursor: pointer; }
 /* SUCCESS */
 .success-msg { display: none; background: rgba(29,184,122,0.1); border: 1px solid rgba(29,184,122,0.25); border-radius: 12px; padding: 16px 20px; text-align: center; color: var(--emerald); font-size: 14px; margin-top: 16px; }
 
-@media(max-width:768px){ .container{padding:0 20px;} .nav-links{display:none;} .contact-grid{grid-template-columns:1fr!important;} .footer-grid{grid-template-columns:1fr 1fr;gap:32px;} .footer-bottom{flex-direction:column;gap:16px;} }
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}.hamburger span{width:22px;height:2px;background:#9098AD;border-radius:2px;transition:all .25s}
+@media(max-width:768px){ .container{padding:0 20px;} .nav-links{display:none;} .nav-actions{display:none;} .hamburger{display:flex;} .nav-links.mobile-open{display:flex;flex-direction:column;position:fixed;left:0;right:0;background:rgba(10,11,15,.97);padding:24px;gap:16px;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:99} .mobile-action-btn{display:block;text-align:center;padding:10px 0;font-size:14px} .contact-grid{grid-template-columns:1fr!important;} .footer-grid{grid-template-columns:1fr 1fr;gap:32px;} .footer-bottom{flex-direction:column;gap:16px;} }
 </style>
 </head>
 <body>
@@ -97,9 +98,10 @@ select.form-input { cursor: pointer; }
         <li><a href="preise.html">Preise</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
-      <div style="display:flex;gap:10px;">
+      <div class="nav-actions" style="display:flex;gap:10px;">
         <a href="kontakt.html" class="btn btn-gold">Kostenlos starten</a>
       </div>
+      <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>
 </nav>
@@ -260,6 +262,8 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+function toggleMenu(){const links=document.querySelector('.nav-links'),navEl=document.querySelector('nav'),isOpen=links.classList.contains('mobile-open');if(isOpen){links.classList.remove('mobile-open');links.style.top='';links.querySelectorAll('.mobile-action-btn').forEach(el=>el.remove())}else{links.style.top=navEl.getBoundingClientRect().height+'px';document.querySelectorAll('.nav-actions a').forEach(btn=>{const clone=btn.cloneNode(true);clone.classList.add('mobile-action-btn');links.appendChild(clone)});links.classList.add('mobile-open')}}
+document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{const links=document.querySelector('.nav-links');if(links){links.classList.remove('mobile-open');links.style.top='';links.querySelectorAll('.mobile-action-btn').forEach(el=>el.remove())}})});
 </script>
 </body>
 </html>
